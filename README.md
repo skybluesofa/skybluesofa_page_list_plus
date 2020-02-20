@@ -4,8 +4,9 @@ Compatible with concrete5 8.3.x and 8.4.x
 
 Compatible with PHP 5.6, 7.0, 7.1 and 7.2
 
-##What it does
-###Page List+ lets you create a list of pages by:
+## What it does
+
+### Page List+ lets you create a list of pages by:
 
 * Choosing one or more page types, page templates and/or page themes
 * Filtering by keywords
@@ -32,11 +33,11 @@ Compatible with PHP 5.6, 7.0, 7.1 and 7.2
     * Page attributes: a-z and z-a
 * Use as site search, allowing users to filter based on criteria that you setup
 
-###Ajax Forms
+### Ajax Forms
 
 Connect any number of Page List+ Forms and Lists together to refresh data without reloading the page
 
-##Adding a Page List+ Block Page
+## Adding a Page List+ Block Page
 At first, the many options of Page List+ may be daunting, but if you go through the tabs left to right, it's fairly straightforward.
 
 There are 5 tabs for the block:
@@ -48,29 +49,29 @@ There are 5 tabs for the block:
 5. [Display](#display). Options for the output of the block.
 
 Along with the tabs is a live preview pane of the pages that will be shown.
-###Page Selection
+### Page Selection
 
-####Page Types
+#### Page Types
 Page types generally represent the type of content and attributes that exists on a page.
 
 * Tick the 'All Page Types' box to add pages of all types to your list.
 * Unticking the 'All Page Types' box allows you to select one or more specific individual page types.
 
-####Page Templates
+#### Page Templates
 
 Page templates represent how your content is formatted, such as left or right navigation.
 
 * Tick the 'All Page Templates' box to add pages of all templates to your list.
 * Unticking the 'All Page Templates' box allows you to select one or more specific individual page templates.
 
-####Page Themes
+#### Page Themes
 
 Page themes represent how your content looks, such as the default 'Elemental' theme or a different one you've selected for your site.
 
 * Tick the 'All Page Themes' box to add pages of all themes to your list.
 * Unticking the 'All Page Theme' box allows you to select one or more specific individual page themes.
 
-####Page Location
+#### Page Location
 
 Choose where in your site you'd like the pages in the list to come from. 
 
@@ -78,70 +79,70 @@ Choose where in your site you'd like the pages in the list to come from.
 * If you are creating some type of navigation, the 'at the current level' option might be helpful.
 * If you choose something other than 'everywhere', you also get the option to select from pages below the page specified in the dropdown.
 
-####Page Permissions
+#### Page Permissions
 
 Sometimes you may want to show pages in the list even though the user does not actually have access to them.
 
-####Page Aliases
+#### Page Aliases
 
 Sometimes a page is actually a 'pointer' to another page on your site; this is an alias. You can choose to hide or show these 'pointers'.
 
-###Search
+### Search
 
-####Filters
+#### Filters
 
-####Keywords
+#### Keywords
 
 Relate to Content from Area on Current Page
 
-###Sort
+### Sort
 
-###Display
+### Display
 
-####List Title
+#### List Title
 
 You can put a title above the list.
 
-####Number of Results
+#### Number of Results
 
 By default, all results are shown. Put a number in to limit the number of results shown. If the 'Show Pagination' is ticked, then the pagination will use this number of results for each 'page' of results.
 
-####No Results Text
+#### No Results Text
 
 Text that is shown during search if no results are found.
 
-####No Results on Page Load
+#### No Results on Page Load
 
 Text that is shown if no results are found when the page loads.
 
-####Show Thumbnail
+#### Show Thumbnail
 
 For each result, if a thumbnail attribute is available, then show it. When this box is ticked, you'll see a text box where you can type in the attribute handles for file attributes, in the order you would like to search for this thumbnail.
 
-####Show Page Name
+#### Show Page Name
 
 Show the name of the page in the results
 
-####Include Page Description
+#### Include Page Description
 
 Show the description of the page in the results. It can be shorted (truncated) to a certain number of characters.
 
-####Show Dates
+#### Show Dates
 
 Show the date the page was first made available. Think of it as a 'page created' date.
 
-####Use Button for Link
+#### Use Button for Link
 
 Show a button below the result of each page. This is useful when creating 'callouts'. If this box is ticked, you'll see a text box where you can type in the text to show on the button, such as 'Find out more'.
 
-####Show 'See All' Link
+#### Show 'See All' Link
 
 When this box is ticked, you can specify a web address and text for the link so visitors can see the entire list of results.
 
-####Provide RSS Feed
+#### Provide RSS Feed
 
 When this box is ticked, a link to an RSS feed will be shown for your page list. You can change the title and description of the feed.
 
-####Show Debug Information
+#### Show Debug Information
 
 While you are creating a Page List+ block, sometimes it's helpful to see what's going on behind the scenes. If this box is ticked, you can change the setting to show in the console and/or on the page.
