@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<schema version="0.3">
+    <table name="aoPageListPlusAttributeBlacklist">
+        <field name="id" type="I">
+            <key/>
+            <unsigned/>
+            <autoincrement/>
+        </field>
+        <field name="akHandle" type="C" size="255"></field>
+        <field name="blacklist" type="I">
+            <unsigned/>
+        </field>
+    </table>
+    <table name="aoPageListPlusAreaBlacklist">
+        <field name="id" type="I">
+            <key/>
+            <unsigned/>
+            <autoincrement/>
+        </field>
+        <field name="area" type="C" size="255"></field>
+        <field name="blacklist" type="I">
+            <unsigned/>
+        </field>
+    </table>
+    <table name="aoPageListPlusTabPlugins">
+        <field name="id" type="I">
+            <key/>
+            <unsigned/>
+            <autoincrement/>
+        </field>
+        <field name="handle" type="C" size="255"></field>
+        <field name="tabName" type="C" size="255"></field>
+        <field name="tabOrder" type="I">
+            <unsigned/>
+        </field>
+    </table>
+    <table name="aoPageListPlusFilterPlugins">
+        <field name="id" type="I">
+            <key/>
+            <unsigned/>
+            <autoincrement/>
+        </field>
+        <field name="handle" type="C" size="255"></field>
+        <field name="filterName" type="C" size="255"></field>
+        <field name="packageId" type="I">
+            <unsigned/>
+        </field>
+    </table>
+</schema>

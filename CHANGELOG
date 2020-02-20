@@ -1,0 +1,163 @@
+# Change Log
+All notable changes to this project will be documented in this file.
+This project adheres to [Semantic Versioning](http://semver.org/).
+
+## [1.0.0] - 2015-04-22
+### Added
+- Initial Release
+
+## [1.0.1] - 2015-04-23
+### Fixed
+- Bug fix for PHP 5.3 compatibility
+
+## [1.0.2] - 2015-04-30
+### Added
+- Compatibility with Concrete5.7.4
+
+## [1.0.4] - 2015-05-01
+### Added
+- Added 'Author' and 'Approved By' standard page attribute filters.
+
+### Updated
+- 'Preview' will no longer show anything if the user is not logged in.
+
+### Fixed
+- Bug fix for compatibility issues with c5.7.4
+
+## [1.1.0] - 2015-05-26
+### Added
+- Functionality to be able to extend Page List+ with custom attribute filters.
+
+### Fixed
+- Installation errors
+
+## [1.1.1] - 2015-05-28
+### Fixed
+- Installation errors
+
+## [1.1.2] - 2015-06-01
+### Added
+- Customizing the pagination
+
+### Fixed
+- Block settings not being saved: page location and hide current page
+- Required core javascript file
+
+## [1.1.3] - 2015-06-15
+### Fixed
+- Bugs in the 'Topics' filter
+
+## [1.1.4] - 2015-06-25
+### Added
+- Exact and partial matches for filtering by a Topic attribute
+
+### Fixed
+- Bugs in the Page Selection
+- Bugs in the Filtering
+- Showing/not showing a thumbnail
+
+## [1.1.5] - 2015-07-12
+### Fixed
+- Issue when relating results to keywords/content in areas
+- Issue when editing a Page List+ block in a stack
+- Loading throbber image
+
+## [1.2.0] - 2015-09-14
+### Added
+- Thumbnail Grid Block Template
+- Find pages 'in the current branch' and 'at the Parent Level' in the Page Selection tab
+
+### Fixed
+- Compatibility with concrete5 v5.7.5.2
+- Search Target URL in search
+- RSS Feed functionality
+- JavaScript issue when visitor is not logged in
+- Filter by Author
+
+## [1.2.1] - 2015-09-15
+### Fixed
+- Bug in version number
+
+## [1.2.2] - 2015-09-18
+### Added
+- Validation for RSS feed title and URL slug
+
+### Fixed
+- Bug in 'Display Pages that are Located...'
+- Bug using 'after' in date filters
+
+## [1.2.3] - 2015-09-20
+### Fixed
+- Bug with RSS when saving
+
+## [1.2.4] - 2015-10-02
+### Added
+- Multi-Date compatibility (ProEvents)
+
+### Fixed
+- Bug with JavaScript inclusion
+
+## [1.2.5] - 2015-10-05
+### Fixed
+- Bug in pagination
+
+## [1.2.6] - 2015-10-07
+### Fixed
+- Bug in the 'Show All' link
+
+## [1.2.7] - 2015-10-28
+### Added
+- New Date/Time filters: is last year, is this year, is next year, in last 12 months, in next 12 months
+
+## [1.2.8] - 2015-11-02
+### Fixed
+- Bug in search when not showing all results on page load
+- Adding CSS to display pagination correctly
+
+## [1.2.9] - 2015-11-20
+### Fixed
+- Bug that results in an empty page list
+
+## [1.2.10] - 2016-01-07
+### Fixed
+- Bug fix for array bug in attribute filters
+
+### Added
+- Page Selector compatibility (for use with the Page Selector attribute package)
+- Sortable attribute filters in the search tab. Drag and drop the checked boxes.
+
+## [1.2.11] - 2016-01-08
+### Fixed
+- Installation error
+
+## [1.2.12] - 2016-01-19
+### Fixed
+- Custom sorting in concrete5.7.5.4
+
+## [1.3.0] - 2016-01-28
+### Updated
+- PHP7 compatibility
+
+### Fixed
+- Filters that were not showing on front-facing forms
+
+## [1.3.1] - 2016-02-03
+### Added
+- Fulltext search capabilities
+- Automatically disables 'Relevance' sorting when querystring is not used
+
+## [1.3.2] - 2016-02-10
+### Fixed
+- Page Type filter preview and JS error
+- Page Template filter preview and JS error
+- Page Theme filter preview and JS error
+- Skip 'x' number of pages
+
+## [1.3.3] - 2016-04-18
+### Fixed
+- Filtering date attributes
+- Displaying aliased pages
+
+## [1.3.4] - 2016-04-20
+### Fixed
+- Filtering date attributes in search

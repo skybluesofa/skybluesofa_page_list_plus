@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<schema version="0.3">
+    <table name="btPageListPlus">
+        <field name="bID" type="I">
+            <key />
+            <unsigned />
+        </field>
+        <field name="pageTypeId" type="X2"></field>
+        <field name="pageTemplateId" type="X2"></field>
+        <field name="pageThemeId" type="X2"></field>
+        <field name="parentPageId" type="C" size="255"></field>
+        <field name="parentPageIdValue" type="C" size="255"></field>
+        <field name="includeAllDescendents" type="L"></field>
+        <field name="ignorePermissions" type="L"></field>
+        <field name="displayAliases" type="L"></field>
+
+        <field name="useForSearch" type="L"></field>
+        <field name="showSearchForm" type="L"></field>
+        <field name="showSearchBox" type="C" size="255"></field>
+        <field name="searchBoxButtonText" type="C" size="255"></field>
+        <field name="searchBoxTargetURL" type="X2"></field>
+        <field name="submitOnChangeOfFilter" type="L"></field>
+        <field name="submitViaAjax" type="L"></field>
+        <field name="showSearchFilters" type="L"></field>
+        <field name="showSearchFilterTitles" type="L"></field>
+        <field name="nameAsSearchFilterAllText" type="L"></field>
+        <field name="searchFilterAllText" type="C" size="255"></field>
+        <field name="alphabetizeSearchSelects" type="L"></field>
+        <field name="showSearchSelectsAsCheckbox" type="L"></field>
+        <field name="showSearchSelectAsCheckboxAttributes" type="X2"></field>
+        <field name="pageAttributeIdsUsedInSearch" type="X2"></field>
+        <field name="pageAttributesUsedForFilter" type="X2"></field>
+        <field name="searchDefaults" type="X2"></field>
+        <field name="showSearchResults" type="L"></field>
+        <field name="showAllResultsOnLoad" type="L"></field>
+        <field name="receiveViaAjax" type="L"></field>
+
+        <field name="resultsRelatedTo" type="C" size="255"></field>
+        <field name="keyword" type="X2"></field>
+        <field name="relatedToArea" type="C" size="255"></field>
+        <field name="mysqlFulltextModifier" type="C" size="255"></field>
+        <field name="orderBy" type="X2"></field>
+        <field name="userSort" type="X2"></field>
+        <field name="hideSortTitle" type="L"></field>
+        <field name="hideCurrentPage" type="L"></field>
+        <field name="useFulltextSearch" type="L"></field>
+
+        <field name="pageListTitle" type="C" size="255"></field>
+        <field name="numberOfResults" type="I"></field>
+        <field name="skipTopNumberOfResults" type="I"></field>
+        <field name="noResultsText" type="X2"></field>
+        <field name="noResultsTextOnSearchLoad" type="X2"></field>
+        <field name="truncateSummaries" type="L"></field>
+        <field name="truncateLength" type="I"></field>
+        <field name="includeThumbnail" type="L"></field>
+        <field name="thumbnailHandles" type="X2"></field>
+        <field name="includeName" type="L"></field>
+        <field name="includeDescription" type="L"></field>
+        <field name="includeDate" type="L"></field>
+        <field name="useButtonForLink" type="L"></field>
+        <field name="buttonLinkText" type="C" size="255"></field>
+        <field name="showSeeAllLink" type="L"></field>
+        <field name="seeAllLinkText" type="C" size="255"></field>
+        <field name="seeAllLinkUrl" type="C" size="255"></field>
+        <field name="paginateResults" type="L"></field>
+        <field name="provideRssFeed" type="L"></field>
+        <field name="pfID" type="I"></field>
+        <field name="rssFeedTitle" type="C" size="255"></field>
+        <field name="rssFeedDescription" type="C" size="255"></field>
+        <field name="rssHandle" type="C" size="255"></field>
+        <field name="showDebugInformation" type="L"></field>
+        <field name="showDebugInformationLocation" type="C" size="255"></field>
+    </table>
+</schema>
