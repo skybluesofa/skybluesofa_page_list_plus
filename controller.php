@@ -4,7 +4,7 @@
 *
 * @package Page List Plus
 * @author Dave Rogers <connect@skybluesofa.com>
-* @version 2.0.1.3
+* @version 2.0.1.4
 * @copyright Copyright (c) 2014, Dave Rogers
 * @license http://www.concrete5.org/help/legal/commercial_add-on_license/ c5 Commercial Add-On License
 */
@@ -25,7 +25,7 @@ class Controller extends Package
     protected $pkgName = "Page List+";
     protected $pkgHandle = 'skybluesofa_page_list_plus';
     protected $appVersionRequired = '8.3.0';
-    protected $pkgVersion = '2.0.1.3';
+    protected $pkgVersion = '2.0.1.4';
 
     public static $pageListPlusFilters = [
         'boolean' => 'Boolean',
