@@ -5,6 +5,7 @@ use Concrete\Core\Page\PageList;
 use Concrete\Core\Attribute\Key\CollectionKey as CollectionAttributeKey;
 use Concrete\Core\File\FileList;
 use Concrete\Core\Page\Page;
+use Concrete\Core\Support\Facade\Application;
 use Concrete\Package\SkybluesofaPageListPlus\PageListPlus\Generator;
 use Database;
 use Concrete\Core\Page\Collection\Version\Version as CollectionVersion;
@@ -143,6 +144,7 @@ class PageListPlus extends PageList
 
     public function finalizeQuery(\Doctrine\DBAL\Query\QueryBuilder $query)
     {
+        $expr = $query->expr();
         if ($this->includeAliases) {
             $query->from('Pages', 'p')
                 ->leftJoin('p', 'Pages', 'pa', 'p.cPointerID = pa.cID')
@@ -150,7 +152,7 @@ class PageListPlus extends PageList
                 ->leftJoin('pa', 'PageSearchIndex', 'psi', 'psi.cID = if(pa.cID is null, p.cID, pa.cID)')
                 ->leftJoin('p', 'PageTypes', 'pt', 'pt.ptID = if(pa.cID is null, p.ptID, pa.ptID)')
                 ->leftJoin('p', 'CollectionSearchIndexAttributes', 'csi', 'csi.cID = if(pa.cID is null, p.cID, pa.cID)')
-                ->innerJoin('p', 'CollectionVersions', 'cv', 'cv.cID = if(pa.cID is null, p.cID, pa.cID) and cvIsApproved = 1')
+                ->innerJoin('p', 'CollectionVersions', 'cv', 'cv.cID = if(pa.cID is null, p.cID, pa.cID)')
                 ->innerJoin('p', 'Collections', 'c', 'p.cID = c.cID')
                 ->andWhere('p.cIsTemplate = 0 or pa.cIsTemplate = 0');
         } else {
@@ -160,9 +162,41 @@ class PageListPlus extends PageList
                 ->leftJoin('p', 'PageTypes', 'pt', 'p.ptID = pt.ptID')
                 ->leftJoin('c', 'CollectionSearchIndexAttributes', 'csi', 'c.cID = csi.cID')
                 ->innerJoin('p', 'Collections', 'c', 'p.cID = c.cID')
-                ->innerJoin('p', 'CollectionVersions', 'cv', 'p.cID = cv.cID and cvIsApproved = 1')
+                ->innerJoin('p', 'CollectionVersions', 'cv', 'p.cID = cv.cID')
                 ->andWhere('p.cPointerID < 1')
                 ->andWhere('p.cIsTemplate = 0');
+        }
+
+        switch ($this->pageVersionToRetrieve) {
+            case self::PAGE_VERSION_RECENT:
+                $query->andWhere('cv.cvID = (select max(cvID) from CollectionVersions where cID = cv.cID)');
+                break;
+            case self::PAGE_VERSION_RECENT_UNAPPROVED:
+                $query
+                    ->andWhere('cv.cvID = (select max(cvID) from CollectionVersions where cID = cv.cID)')
+                    ->andWhere($expr->eq('cvIsApproved', 0));
+                break;
+            case self::PAGE_VERSION_SCHEDULED:
+                $now = new \DateTime();
+                $query->andWhere('cv.cvID = (select cvID from CollectionVersions where cID = cv.cID and cvIsApproved = 1 and ((cvPublishDate > :cvPublishDate) and (cvPublishEndDate >= :cvPublishDate or cvPublishEndDate is null)) order by cvPublishDate desc limit 1)');
+                $query->setParameter('cvPublishDate', $now->format('Y-m-d H:i:s'));
+                break;
+            case self::PAGE_VERSION_ACTIVE:
+            default:
+                $app = Application::getFacadeApplication();
+                $nowParameter = $query->createNamedParameter($app->make('date')->getOverridableNow());
+                $query
+                    ->andWhere($expr->eq('cv.cvIsApproved', 1))
+                    ->andWhere($expr->orX(
+                        $expr->isNull('cv.cvPublishDate'),
+                        $expr->lte('cv.cvPublishDate', $nowParameter)
+                    ))
+                    ->andWhere($expr->orX(
+                        $expr->isNull('cv.cvPublishEndDate'),
+                        $expr->gte('cv.cvPublishEndDate', $nowParameter)
+                    ))
+                ;
+                break;
         }
 
         if ($this->isFulltextSearch) {
@@ -174,10 +208,68 @@ class PageListPlus extends PageList
             $query->andWhere('p.cIsActive = :cIsActive');
             $query->setParameter('cIsActive', 1);
         }
+
+        if ($this->query->getParameter('cParentID') < 1) {
+            // The code above is set up to make it so that we don't filter by site tree
+            // if we have a defined parent.
+
+            if (is_object($this->siteTree) || is_array($this->siteTree)) {
+                $tree = $this->siteTree;
+            } else {
+                switch ($this->siteTree) {
+                    case self::SITE_TREE_CURRENT:
+                        $c = \Page::getCurrentPage();
+                        $tree = false;
+                        if (is_object($c) && !$c->isError()) {
+                            $tree = $c->getSiteTreeObject();
+                        }
+                        if (!is_object($tree)) {
+                            $site = \Core::make("site")->getSite();
+                            $tree = $site->getSiteTreeObject();
+                        }
+                        break;
+                    default:
+                        $tree = null;
+                        break;
+                }
+            }
+
+            if ($tree !== null) {
+                if (!is_array($tree)) {
+                    $tree = [$tree];
+                }
+                $treeIDs = [];
+                foreach ($tree as $siteTree) {
+                    if ($siteTree instanceof Site) {
+                        foreach ($siteTree->getLocales() as $locale) {
+                            $treeIDs[] = $locale->getSiteTreeID();
+                        }
+                    } else {
+                        $treeIDs[] = $siteTree->getSiteTreeID();
+                    }
+                }
+                if (count($treeIDs) === 0) {
+                    if (!$this->includeSystemPages) {
+                        $query->andWhere($query->expr()->neq('p.siteTreeID', 0));
+                    }
+                } else {
+                    $or = $query->expr()->orX();
+                    foreach ($treeIDs as $treeID) {
+                        $or->add($query->expr()->eq('p.siteTreeID', $treeID));
+                    }
+                    if ($this->includeSystemPages) {
+                        $or->add($query->expr()->eq('p.siteTreeID', 0));
+                    }
+                    $query->andWhere($or);
+                }
+            }
+        }
+
         if (!$this->includeSystemPages) {
             $query->andWhere('p.cIsSystemPage = :cIsSystemPage');
             $query->setParameter('cIsSystemPage', 0);
         }
+
         return $query;
     }
 
