@@ -137,7 +137,7 @@ $wrapperClasses = implode(' ', $wrapperClasses);
             <?php endforeach; ?>
         </div>
 
-        <?php if (count($pages) == 0): ?>
+        <?php if (count($controller->pages) == 0): ?>
             <div class="ccm-block-page-list-no-pages"><?php echo $noResultsText ?></div>
         <?php endif; ?>
 
