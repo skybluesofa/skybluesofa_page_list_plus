@@ -746,7 +746,7 @@ class Generator
                 //$columns = $db->MetaColumns($collectionAttributeKey->getIndexedSearchTable());
                 //V8 fix per https://github.com/concrete5/concrete5/issues/4916
                 $category = \Concrete\Core\Attribute\Key\Category::getByHandle('collection')->getController();
-				$columns = $db->MetaColumns($category->getIndexedSearchTable());
+		$columns = $db->MetaColumns($category->getIndexedSearchTable());
                 //
                 
                 if (isset($columns[$column])) {
