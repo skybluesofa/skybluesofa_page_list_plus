@@ -741,8 +741,8 @@ class Generator
                 $db = Database::getActiveConnection();
                 $direction = substr($order, strrpos($order, '_') + 1);
                 $column = 'ak_' . substr($order, 0, strrpos($order, '_'));
-                $collectionAttributeKey = new CollectionAttributeKey();
-                $columns = $db->MetaColumns($collectionAttributeKey->getIndexedSearchTable());
+                $category = \Concrete\Core\Attribute\Key\Category::getByHandle('collection')->getController();
+                $columns = $db->MetaColumns($category->getIndexedSearchTable());
                 if (isset($columns[$column])) {
                     $sorting = ['column' => $column, 'direction' => $direction];
                 } elseif (isset($columns[$column . '_percentage'])) {
