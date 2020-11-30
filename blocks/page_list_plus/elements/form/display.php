@@ -126,7 +126,7 @@
 		</span>
             <input class="form-control"
                    id="ccm-pagelist-truncateChars" <?php echo($controller->truncateSummaries ? "" : "disabled=\"disabled\"") ?>
-                   type="number" min="0" name="truncateChars" size="3" value="<?php echo intval($controller->truncateLength) ?>"/>
+                   type="number" min="0" name="truncateLength" size="3" value="<?php echo intval($controller->truncateLength) ?>"/>
 		<span class="input-group-addon">
 			<?php echo t('truncated characters') ?>
 		</span>
