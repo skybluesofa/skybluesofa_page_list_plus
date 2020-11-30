@@ -124,7 +124,7 @@
 			<input id="ccm-pagelist-truncateSummariesOn" name="truncateSummaries" type="checkbox"
                    value="1" <?php echo($controller->truncateSummaries ? "checked=\"checked\"" : "") ?> />
 		</span>
-            <input class="form-control"
+            <input class="form-control" style="width: 90px;"
                    id="ccm-pagelist-truncateChars" <?php echo($controller->truncateSummaries ? "" : "disabled=\"disabled\"") ?>
                    type="number" min="0" name="truncateLength" size="3" value="<?php echo intval($controller->truncateLength) ?>"/>
 		<span class="input-group-addon">
