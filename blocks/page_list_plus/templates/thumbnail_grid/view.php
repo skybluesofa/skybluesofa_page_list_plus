@@ -22,7 +22,7 @@ $c = Page::getCurrentPage();
         }
         $hoverLinkText = $title;
         $description = $page->getCollectionDescription();
-        $description = $controller->truncateSummaries ? $th->wordSafeShortText($description, $controller->truncateChars) : $description;
+        $description = $controller->truncateSummaries ? $th->wordSafeShortText($description, $controller->truncateLength) : $description;
         $description = $th->entities($description);
         if ($useButtonForLink) {
             $hoverLinkText = $buttonLinkText;
