@@ -37,7 +37,7 @@ $wrapperClasses = implode(' ', $wrapperClasses);
                 $target = ($page->getCollectionPointerExternalLink() != '' && $page->openCollectionPointerExternalLinkInNewWindow()) ? '_blank' : $page->getAttribute('nav_target');
                 $target = empty($target) ? '_self' : $target;
                 $description = $page->getCollectionDescription();
-                $description = $controller->truncateSummaries ? $textHelper->wordSafeShortText($description, $controller->truncateChars) : $description;
+                $description = $controller->truncateSummaries ? $textHelper->wordSafeShortText($description, $controller->truncateLength) : $description;
                 $description = $textHelper->entities($description);
                 $thumbnail = false;
                 if ($controller->includeThumbnail) {
