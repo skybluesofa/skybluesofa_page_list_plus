@@ -297,6 +297,7 @@ class Controller extends BlockController
         $args['hideCurrentPage'] = isset($args['hideCurrentPage']) ? 1 : 0;
         $args['useFulltextSearch'] = isset($args['useFulltextSearch']) ? 1 : 0;
         $args['truncateSummaries'] = isset($args['truncateSummaries']) ? 1 : 0;
+        $args['truncateLength'] = isset($args['truncateLength']) ? $args['truncateLength'] : 0; //Save the Truncate length!!
         $args['showSeeAllLink'] = isset($args['showSeeAllLink']) ? 1 : 0;
         $args['includeThumbnail'] = isset($args['includeThumbnail']) ? 1 : 0;
         $args['includeName'] = isset($args['includeName']) ? 1 : 0;
